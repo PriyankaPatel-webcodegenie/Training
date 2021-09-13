@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <script src="jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                    $("#height").click(function(){
+                        $("#box").animate({height: "300px"})
+                                .animate({borderWidth:"10px"})
+                    })
+                    $("#stop").click(function(){
+                        $("box").stop();
+                    })
+            });
+        </script>
+        <div id="box" style="width: 100px; height: 100px; background-color: cadetblue;"></div>
+        <button id="height">Animate </button>
+        <button id="stop"> STOP </button>
+    </body>
+</html>

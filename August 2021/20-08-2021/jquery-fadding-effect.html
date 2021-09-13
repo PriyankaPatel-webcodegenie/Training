@@ -1,0 +1,33 @@
+<html>
+    <body>
+        <script src="jquery-3.6.0.min.js"></script>
+        <script>
+               $(document).ready(function(){
+                $("#fadein").click(function(){
+                    $("p").fadeIn();
+                })
+                $("#fadeout").click(function(){
+                    $("p").fadeOut();
+                })
+                $("#toggle").click(function(){
+                  $("p").fadeToggle();
+
+                });
+                $("#toggle").click(function(){
+                  $("p").fadeToggle();
+
+                });
+                $("#fadeTo").click(function(){
+                  $("p").fadeTo("slow",0.5);
+
+});
+        });
+        </script>
+     
+        <p>This is  paragraph ..</p>
+        <button id="fadein"> FadeIn</button> <br><br>
+        <button id="fadeout"> FadeOut </button><br><br>
+        <button id="fadeTo"> FadeTo </button><br><br>
+        <button id="toggle">Toggle Button</button>
+    </body>
+</html> 

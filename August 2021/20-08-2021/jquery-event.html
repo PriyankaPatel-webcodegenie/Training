@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <script src="jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#click").click(function(){
+                    $(this).slideUp();
+                })
+                $("#dblclick").dblclick(function(){
+                    $(this).slideUp();
+                })
+                $("#hover").hover(function(){
+                    $(this).slideUp();
+                })
+                i=0;
+                $("input").keypress(function(){
+                        $("p").text(i += 1);
+                 $("input").keydown(function(){
+                          $("input").css("background-color", "red");
+});
+});
+
+            });      
+              </script>
+    </body>
+    <h1 id="click">
+        Hi, Click here.
+    </h1>
+    <h1 id="dblclick">
+        double click here
+    </h1>
+    <h1 id="hover">Hover </h1>
+    <input type="text">
+   <p>0</p>
+</html>

@@ -1,0 +1,16 @@
+Fiile System
+------------------
+
+- writeFile() & writeFileSysc()
+	https://medium.com/@abdishire15/what-is-the-difference-between-fs-writefile-and-fs-writefilesync-3a2c3f2c516
+-without utf-8
+
+	var fs = require('fs');
+	fs.readFile("hello.txt", function (err, data) {
+ 	   if (err)
+  	      throw err;
+  	  console.log(data);
+	});
+	output:<Buffer 48 65 6c 6c 6f 20 57 6f 72 6c 64 57 65 6c 63 6f 6d 65>
+- With utf-8
+	

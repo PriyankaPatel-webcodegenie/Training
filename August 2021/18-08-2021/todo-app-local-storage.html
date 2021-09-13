@@ -1,0 +1,30 @@
+<html>
+
+<body>
+
+        <input type="text" id="task" style="width: 30% ;height:30px;">
+        <button onclick="fun()" style="width: 30% ;height:30px;">>Add </button>
+        <span id="invalid"></span>
+
+
+
+    <script type="text/javascript">
+
+        n = 0;
+        arr = Array();
+
+        function fun() {
+            arr[n] = document.getElementById("task").value;
+
+            if (arr[n] != "") {
+                localStorage.setItem(n, JSON.stringify(arr[n]));
+                n++;
+                document.getElementById("item").value = "";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

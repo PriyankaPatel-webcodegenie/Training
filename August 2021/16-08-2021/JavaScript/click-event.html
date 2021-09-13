@@ -1,0 +1,34 @@
+<html>
+    <body>
+        <script>
+        function myfun()
+        {
+            if(f1.n1.value=="")
+            {
+                alert("Enter value of number 1");
+                f1.n1.focus();
+            }
+            else if(f1.n2.value=="")
+            {
+                alert("Enter value of number 2");
+                f1.n2.focus();
+            }
+            else
+            {
+                var num1 = parseInt(f1.n1.value);
+                var num2 = parseInt(f1.n2.value);
+                sum = num1 + num2;
+                f1.res.value=sum;
+
+            }
+        }
+        </script>
+        <form name="f1">
+            Number 1<input type="text" name="n1"><br>
+           Number 2 <input type="text" name="n2"><br>
+            <input type="button" onclick="myfun()" value="sum">
+            <input type="text" name="res">
+            <h2 name="add"></h2>
+        </form>
+    </body>
+</html>

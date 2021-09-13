@@ -1,0 +1,16 @@
+<html>
+    <body>
+        <script>
+            function fun1()
+            {
+                document.write("</h1> Key is pressed..</h1>");
+            }
+            function keyup()
+            {
+                var x = document.getElementById("fname");
+                 x.value = x.value.toUpperCase();
+            } 
+        </script>
+        <input id="fname" type="text" onkeypress="fun1()" onkeyup="keyup()" >
+    </body> 
+</html>
