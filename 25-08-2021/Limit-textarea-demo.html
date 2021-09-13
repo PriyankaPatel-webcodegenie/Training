@@ -1,0 +1,23 @@
+<html>
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-simple-txt-counter.js"></script>
+
+<body>
+    <style>
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('textarea').simpleTxtCounter({
+                maxLength: 160,
+                countText: 'Max',
+                countElem: '<div class="form-text"></div>',
+                lineBreak: true,
+            });
+
+        })
+    </script>
+    <textarea id="count" cols="30" rows="10" placeholder="Address" ></textarea>
+
+</body>
+
+</html>

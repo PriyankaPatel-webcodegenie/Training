@@ -1,0 +1,268 @@
+        <!-- event: onfocus onsubmit -->
+
+<html>
+
+<head>
+    <title>
+        JOB APPLICATION
+    </title>
+</head>
+<script type="text/javascript">
+function fun(color)
+{
+    color.style.backgroundColor="#ffe6e6";
+}
+function submit()
+{
+    document.write("</h1> Application submited suceessfuly..</h1>");
+}
+function blur(color)
+{
+    color.style.backgroundColor="white";
+}
+</script>
+<style>
+    
+  div
+    {
+        text-align: center;
+    }
+</style>
+<form action="post">
+    <H1 style="text-align: center; color: crimson;" >
+        APPLICATION FOR SOFTWARE DEVELOPER
+    </H1>
+    <div class="item">
+        <table cellspacing='10px'>
+            <tr>
+                <th><h2><u>Personal Information</u> </h2>  </th>
+            </tr>
+            <tr>
+                <td>
+                    NAME:
+                </td>
+                <td>
+                    <input onfocus="fun(this)" onblur="blur(this)" type="text" style="height: 30px; width:280px; " name="name" placeholder="First Name "
+                        required />
+                </td>
+                <td>
+                    <input type="text" style="height: 30px; width:280px; " name="name" placeholder="Last Name"
+                        required />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                  <br> Contact Number:
+                </td>
+                <td>
+                    <input type="text" style="height: 20px; width:280px; "required>
+                </td>
+
+            </tr>
+            <tr>
+                 
+                  
+                  <td><br>  E-Mail: </td>
+                <td><input type="email" style="height: 30px; width:280px; "required></td>
+            </tr>
+            <tr>
+                <td> <br> Date Of Birth: </td>
+                <td> <input type="date" required></td>
+            </tr>
+            <tr>
+                <td> <br> Gender: </td>
+                <td> <input type="radio" name="rd" value="m">Male
+                    <input type="radio" name="rd" value="f" required>Female </td>
+            </tr>
+            <tr>
+                <td><br> City :</td>
+                <td>  <input type="text" style="height: 30px; width:280px; " required></td>
+            </tr>
+            <tr>
+                <td>
+                    <br>   Languages Known:
+                </td>
+                <td>
+                      <input type="checkbox" name="lang"> English
+                    <input type="checkbox" name="lang"> Hindi
+                    <input type="checkbox" name="lang"> Gujarati
+                    <input type="checkbox" name="lang"> Other
+
+                </td>
+
+            </tr>
+            <tr>
+                <td><br> 
+                    <input type="textarea" style="height: 100px; width: 285px;" placeholder="Describe about Your Self" required>
+                </td>
+               
+            </tr>
+           
+         <th> <h2> </br> <u> Edcational Qualiication</u> </h2></th>
+            <tr>
+               
+                <td>  School/College Name: </td>
+                <td> <input type="text" style="height: 30px; width:280px; " name="cname" placeholder="Institute Name"
+                    required /></td>
+            </tr>
+            <tr>
+                <td> <br>    <label for="select">Pass Out Year:</label> </td>
+                <td> <select name="passout" id="select">
+                    <option value="select" disabled>select</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td> <br>  Percentage/CGPA:  </td>
+                <td> <input type="text" id="" required></td>
+            </tr>
+            <tr>
+                <td>  <br> Acedemic Project: </td>
+                <td>  <input type="textarea" style="height: 60px; width:280px; "
+                    placeholder="Describe Acedemic Project in Brief" required></td>
+            </tr>
+            <tr>
+                <td>
+                    <br>  Extra Curiculam Activities: 
+                </td>
+                <td>
+                    <input type="textarea" style="height: 60px; width:280px; "
+        placeholder="Describe Your achivments">
+                </td>
+            </tr>
+            <th><h2><br><u> Work Experience</u> </h2></th>
+            <tr>
+                <td>
+                    Years of Experience:
+                </td>
+                <td>
+                    <select name="year" id="">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5+">5+</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br> Company Name:
+                </td>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br>   Start Date:
+                </td>
+                <td>
+                    <input type="date">
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <br>    End Date:
+                </td>
+                <td>
+                    <input type="date">
+                </td>
+                
+            </tr>
+            <tr>
+                <td><input type="textarea" style="height: 60px; width:280px; "
+                    placeholder="Job Roles"></td>
+            </tr>
+            <tr>
+                <td>
+                    <br>    Current CTC:
+                </td>
+                <td>
+                    <input type="text" style="height: 20px; width:280px; " placeholder="In lakhs">
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <br>     Expected CTC:
+                </td>
+                <td>
+                    <input type="text" style="height: 20px; width:280px; "placeholder="In lakhs">
+                </td>
+
+            </tr>
+             <th><h2><br><u>Other Information </u> </h2></th>
+                <tr>
+                    <br>  <td>Soft Skills: </td>
+                    <td><input type="textarea" style="height: 60px; width:280px; " placeholder="Describe Your Soft Skils"required></td>
+                </tr>
+                <tr>
+                    <td><br> Technical Skills: </td>
+                     <td><input type="textarea" style="height: 60px; width:280px; "
+                        placeholder="Describe Your Technical Skils" required></td>
+            </tr>
+                <tr>
+                    <td><br> GitHub Link:  </td>
+                    <td> <input type="url" placeholder=" URL of your Github Account " style="width: 300px;"> </td>
+                </tr>
+                <tr>
+                       <td><br>  Date of Joining </td>
+                    <td> <input type="date"></td>
+                </tr>
+                <tr>
+                     <td>
+                        <br>  Preferred Job Location:
+                    </td>
+                    <td>
+                        <input type="checkbox" name="lang"> Ahmedabad
+                        <input type="checkbox" name="lang"> Hydrabad
+                        <input type="checkbox" name="lang"> Mumbai
+                        <input type="checkbox" name="lang"> Other
+    
+                    </td>
+    
+                </tr>
+                <tr>
+                      <td><br> 
+                        Are You Ready to relocate to Ahmedabad:
+                    </td>
+                    <td>
+                        <input type="radio" name="radio"> YES <input type="radio" name="radio" > NO
+                    </td>
+                </tr>
+                <tr>
+                     <td> <br> From where you know about Company </td>
+                    <td> <input type="radio" name="rd2" value="L">LinkdIn
+                        <input type="radio" name="rd2" value="N">Naukri.com
+                        <input type="radio" name="rd2" value="N">Friends
+                        <input type="radio" name="rd2" value="N">Other</td>
+                </tr>
+                <tr>
+                      <td>Upload CV</td> 
+                    <td> <input type="file" required></td>
+                </tr>
+    
+                <br>
+                <br>
+                <tr>
+                    <td> 
+                        <br><br> <input type="reset" style="height: 40px; width:280px;">
+                    </td>
+                    <td>
+                        <br><br>  <input onsubmit="submit()" type="submit" style="height: 40px; width:280px;" >
+                    </td>
+                </tr>
+            </TAble>
+            
+      
+        
+    </form>
+
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <body>
+        <script>
+            var arr=[];
+            function myfun()
+            {
+                var data = document.getElementById('task').value;
+                arr.push(data);
+                var val = "";
+                for(i=0; i<arr.length; i++)
+                {
+                        val+=arr[i];
+                }
+                
+                document.getElementById('list').innerHTML=val;
+
+            }
+        </script>
+        <input type="text" id="task">
+        <button onclick="myfun()">
+            Click here to add task
+        </button>
+        <ul id="list">
+           
+        </ul>
+    </body>
+</html>

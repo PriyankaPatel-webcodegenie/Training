@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <!-- External CSS to use JQuery chosen -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="chosen.css">
+      
+    </head>
+    
+    <script src="../jquery-3.6.0.min.js"></script>
+    <script src="chosen.jquery.js"></script>
+
+    <style>
+        .city{
+            width: 550px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+                $(".city").chosen();
+        });
+    </script>
+    <body>
+    <h1>Chosen</h1>
+            <select data-placeholder="Choose a City..." class="city">
+                <option value=""></option>
+                <option value="">Ahmedabad</option>
+                <option value="">Surat</option>
+                <option value="">Gandhinagar</option>
+                <option value="">Rajkot</option>
+                <option value="">Baroda</option>
+            </select>
+            <select data-placeholder="Choose a City..." class="city" multiple>
+                <option value=""></option>
+                <option value="">Ahmedabad</option>
+                <option value="">Surat</option>
+                <option value="">Gandhinagar</option>
+                <option value="">Rajkot</option>
+                <option value="">Baroda</option>
+            </select>
+        
+       
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+
+<body>
+    <script>
+
+        var Calc = function (x) {
+
+            var result = x;
+            this.add = function (x) {
+
+                result = result + x;
+
+                return this;
+            };
+
+            this.sub = function (x) {
+
+                result = result - x;
+
+                return this;
+            };
+            this.multiply = function (x) {
+
+                result = result * x;
+
+                return this;
+            };
+            this.div = function (x) {
+
+                result = result / x;
+
+                return this;
+            };
+
+            this.Result = function () {
+                return result;
+            }
+
+
+        };
+
+
+        var total = new Calc(2).add(2).multiply(5).sub(2).div(2);    //4
+
+        alert(total.Result());
+    </script>
+
+</body>
+
+</html>
