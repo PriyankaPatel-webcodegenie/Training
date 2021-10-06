@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+<script>
+    function fun() {
+        swal("Hello..");
+    }
+    function fun2() {
+        swal(" Sweet Alert", "Hello..");
+    }
+    function fun3() {
+        swal("Good job!", "You clicked the button!", "success");
+    }
+    function fun4() {
+        swal("Good job!", "You clicked the button!", "success", {
+            button: "Aww yiss!",
+        });
+
+    }
+    function fun5() {
+        swal("Click on either the button or outside the modal.")
+            .then((value) => {
+                swal(`The returned value is: ${value}`);
+            });
+    }
+    function fun6() {
+        swal({
+            title: "Are you sure?",
+            text: "But you will still be able to retrieve this file.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, archive it!",
+            cancelButtonText: "No, cancel please!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+            function (isConfirm) {
+                if (isConfirm) {
+                    swal("Deleted!", "Your imaginary file has been archived.", "success");
+                } else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                }
+            });
+    }
+    function fun7() {
+        swal("A wild Pikachu appeared! What do you want to do?", {
+    showConfirmButton: false,
+    buttons: {
+    cancel: "Run away!",
+    catch: {
+      text: "Throw Pokéball!",
+      value: "catch",
+    },
+    defeat: true,
+  },
+})
+.then((value) => {
+  switch (value) {
+
+    case "defeat":
+      swal("Pikachu fainted! You gained 500 XP!");
+      break;
+
+    case "catch":
+      swal("Gotcha!", "Pikachu was caught!", "success");
+      break;
+
+    default:
+      swal("Got away safely!");
+  }
+});
+
+    }
+</script>
+
+<body>
+    <h1>Sweet Alert</h1>
+    <button onclick="fun()"> click </button>
+    <button onclick="fun2()"> Title and text </button>
+    <button onclick="fun3()">With icon</button>
+    <button onclick="fun4()">With icon & button</button>
+    <button onclick="fun5()">Use Promises</button>
+    <button onclick="fun6()"> delete</button>
+    <button onclick="fun7()"> Pikachu</button>
+</body>
+
+</html>

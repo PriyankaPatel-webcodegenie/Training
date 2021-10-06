@@ -1,0 +1,27 @@
+<html>
+    <h1>User Table</h1>
+    <table border="1px">
+        <tr>
+              <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Contact number</th>
+        </tr>
+      
+     {{#each mydata}}
+     <tr>
+         <td>{{id}}</td>
+         <td>{{first_name}}</td>
+         <td>{{last_name}}</td>
+         <td>{{email}}</td>
+         <td>{{contact_number}}</td>
+          <td>
+        <a href="/users/edit/{{_id}}">Edit</a> |
+        <a href="/users/delete/{{_id}}">Delete</a>
+
+    </td>
+     </tr>
+     {{/each}}
+    </table>
+</html>
