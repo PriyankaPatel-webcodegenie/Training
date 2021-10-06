@@ -1,0 +1,32 @@
+Record No.{{user_array.length}}
+<table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Join Date</th>
+        <th>Photo</th>
+    </tr>
+
+    {{#each user_array}}
+
+    <tr>
+        <td>
+            
+          
+        </td>
+        <td>{{name}}</td>
+         <td>{{gender}}</td>
+         <td>
+             {{email}}
+         </td>
+         <td>{{password}}</td>
+         <td>{{date}}</td>
+          <td><img src="/upload/{{photo}}" style="width: 100px;"></td>
+        
+    </tr>
+    {{else}}Record Not Found
+    {{/each}}
+</table>
