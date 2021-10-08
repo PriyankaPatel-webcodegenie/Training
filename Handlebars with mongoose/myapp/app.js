@@ -9,11 +9,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-//DB Connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/db')
-.then(()=>console.log("Connection Open"))
-.catch(()=>console.log("Error"))
+		mongoose.connect('mongodb://mydb1:mydb1@localhost:27017/mydb1')
+		.then(()=>console.log("Connection Open"))
+		.catch(()=>console.log("Error"))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({
