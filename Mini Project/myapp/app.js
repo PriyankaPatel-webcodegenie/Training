@@ -6,11 +6,19 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 var session = require('express-session')
 const nodemailer = require("nodemailer");
+const fileUpload = require('express-fileupload');
 var exphbs  = require('express-handlebars');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
+var categoryRouter = require('./routes/category');
+var subcategoryRouter = require('./routes/subcategory');
+var productRouter = require('./routes/product');
+var stateRouter = require('./routes/state');
+var cityRouter = require('./routes/city');
+var areaRouter = require('./routes/area');
 var adminModel = require('./models/admin')
+
 var app = express();
 mongoose.Promise = global.Promise;
 		mongoose.connect('mongodb://mydb1:mydb1@localhost:27017/mydb1')
@@ -36,10 +44,17 @@ app.use(session({
   saveUninitialized: true,
   cookie: { maxAge: 600000 }
 }))
+app.use(fileUpload());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin',adminRouter);
-
+app.use('/admin/users',usersRouter)
+app.use('/admin/category',categoryRouter)
+ app.use('/admin/subcategory',subcategoryRouter)
+app.use('/admin/product',productRouter);
+app.use('/admin/state',stateRouter);
+app.use('/admin/city',cityRouter);
+app.use('/admin/area',areaRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

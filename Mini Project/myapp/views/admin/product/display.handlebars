@@ -188,40 +188,52 @@
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
-                                           
+
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Product Name</th>
+                                                <th>product details</th>
+                                                <th>Product price</th>
+                                                <th>category</th>
+                                                <th>Subcategory</th>
+                                                <th>Image</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
 
-   
-                                        {{#each mydata}}
-                               
-                                    
-                                               <tr>
-                                                <td>1</td>
-                                                <td>{{name}}</td>
-                                                <td>{{email}}</td>
+
+                                        {{#each product_array}}
 
 
-                                                <td>
-                                                    {{!-- <a href="/students/edit/{{_id}}">Edit</a> |
-                                                    <a href="/students/delete/{{_id}}">Delete</a> --}}
+                                        <tr>
+                                            <td>1</td>
+                                            <td>{{product_name}}</td>
+                                            <td>{{product_details}}</td>
+                                            <td>{{product_price}}</td>
+                                            <td>{{_category.category_name}}</td>
+                                            <td>{{_subcategory.subcategory_name}}</td>
+                                          <td><img src="/product/{{product_image}}" style="width: 100px;"></td>
 
-                                                </td>
-                                            </tr>
-                                         
-                                          {{/each}}
 
-                            
+                                            <td>
+                                                <a href="/admin/product/edit/{{_id}}">Edit</a> |
+                                                <a href="/admin/product/delete/{{_id}}">Delete</a>
+
+                                            </td>
+                                        </tr>
+
+                                        {{/each}}
+
+
                                         <tfoot>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Product Name</th>
+                                                <th>product details</th>
+                                                <th>Product price</th>
+                                                <th>category</th>
+                                                <th>Subcategory</th>
+                                                <th>Image</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>

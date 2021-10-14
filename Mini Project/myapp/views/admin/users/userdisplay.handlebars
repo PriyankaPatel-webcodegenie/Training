@@ -188,40 +188,53 @@
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
-                                           
+
                                             <tr>
                                                 <th>Id</th>
                                                 <th>Name</th>
+                                                <th>Gender</th>
                                                 <th>Email</th>
+                                                <th>Password</th>
+                                                <th>Address</th>
+                                                <th>photo</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
 
-   
-                                        {{#each mydata}}
-                               
-                                    
-                                               <tr>
-                                                <td>1</td>
-                                                <td>{{name}}</td>
-                                                <td>{{email}}</td>
+
+                                        {{#each user_array}}
 
 
-                                                <td>
-                                                    {{!-- <a href="/students/edit/{{_id}}">Edit</a> |
-                                                    <a href="/students/delete/{{_id}}">Delete</a> --}}
+                                        <tr>
+                                            <td>1</td>
+                                            <td>{{name}}</td>
+                                            <td>{{gender}}</td>
+                                            <td>
+                                                {{email}}
+                                            </td>
+                                            <td>{{password}}</td>
+                                            <td>{{address}}</td>
+                                            <td><img src="/upload/{{photo}}" style="width: 100px;"></td>
 
-                                                </td>
-                                            </tr>
-                                         
-                                          {{/each}}
+                                            <td>
+                                                <a href="/edit/{{_id}}">Edit</a> |
+                                                <a href="/admin/users/delete/{{_id}}">Delete</a>
 
-                            
+                                            </td>
+                                        </tr>
+
+                                        {{/each}}
+
+
                                         <tfoot>
                                             <tr>
                                                 <th>Id</th>
                                                 <th>Name</th>
+                                                <th>Gender</th>
                                                 <th>Email</th>
+                                                <th>Password</th>
+                                                <th>Address</th>
+                                                <th>photo</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>

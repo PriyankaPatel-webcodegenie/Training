@@ -182,7 +182,7 @@ router.post('/changepassword', function (req, res, next) {
      res.redirect('/admin/login');
    }
   console.log("Home Called " + req.session.email);
-  var myemail = req.body.email;
+//  var myemail = req.body.email;
   var opass = req.body.opass;
   var npass = req.body.npass;
   var cpass = req.body.cpass;

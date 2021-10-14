@@ -188,40 +188,39 @@
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
-                                           
+
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
+                                                <th>State</th>
+                                              
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
 
-   
-                                        {{#each mydata}}
-                               
-                                    
-                                               <tr>
-                                                <td>1</td>
-                                                <td>{{name}}</td>
-                                                <td>{{email}}</td>
+
+                                        {{#each state_array}}
 
 
-                                                <td>
-                                                    {{!-- <a href="/students/edit/{{_id}}">Edit</a> |
-                                                    <a href="/students/delete/{{_id}}">Delete</a> --}}
-
-                                                </td>
-                                            </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>{{state_name}}</td>
                                          
-                                          {{/each}}
 
-                            
+                                            <td>
+                                                <a href="/admin/state/edit/{{_id}}">Edit</a> |
+                                                <a href="/admin/state/delete/{{_id}}">Delete</a>
+
+                                            </td>
+                                        </tr>
+
+                                        {{/each}}
+
+
                                         <tfoot>
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
+                                                <th>state</th>
+                                              
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>

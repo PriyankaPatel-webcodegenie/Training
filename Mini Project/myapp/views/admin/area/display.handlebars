@@ -188,40 +188,46 @@
                                 <div class="card-body">
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
-                                           
+
                                             <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Area</th>
+                                                <th>State</th>
+                                                <th>City</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
 
-   
-                                        {{#each mydata}}
-                               
-                                    
-                                               <tr>
-                                                <td>1</td>
-                                                <td>{{name}}</td>
-                                                <td>{{email}}</td>
+
+                                        {{#each area_array}}
 
 
-                                                <td>
-                                                    {{!-- <a href="/students/edit/{{_id}}">Edit</a> |
-                                                    <a href="/students/delete/{{_id}}">Delete</a> --}}
+                                        <tr>
+                                            <td>1</td>
+                                            <td>{{area_name}}</td>
+                                            <td>{{_state.state_name}}</td>
+                                            <td>{{_city.city_name}}</td>
+                                      
 
-                                                </td>
-                                            </tr>
-                                         
-                                          {{/each}}
 
-                            
+                                            <td>
+                                                <a href="/admin/area/edit/{{_id}}">Edit</a> |
+                                                <a href="/admin/area/delete/{{_id}}">Delete</a>
+
+                                            </td>
+                                        </tr>
+
+                                        {{/each}}
+
+
                                         <tfoot>
-                                            <tr>
+                                           <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Area</th>
+                                            
+                                          
+                                                <th>State</th>
+                                                <th>city</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
