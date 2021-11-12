@@ -1,0 +1,223 @@
+<title>JQuery Ajax - Bootstrap - NodeJS/Express - MySQL</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="../jquery.validate.js"></script>
+<script src="../jquery-3.6.0.min.js"></script>
+
+{{!--
+<script src="../public/stylesheets/getrequest.js"></script> --}}
+{{!--
+<script src="../public/postrequest.js"></script> - --}}
+
+
+
+<div class="container">
+    <div class="col-sm-4">
+        <h3>NodeJS/Express Post/Get Ajax</h3>
+        <div>
+            <form id="userForm" method="post" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="firstname">FirstName:</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname"
+                        placeholder="Enter FirstName">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">LastName:</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Enter LastName" name="lastname">
+                </div>
+                <div class="form-group">
+                    <label for="Address">Address:</label>
+
+                    <textarea name="address" class="form-control" id="address" cols="30" rows="10" name="address"
+                        placeholder="Address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="hobby">Hobby:</label>
+
+                    <input type="checkbox" name="Reading" value="reading">Reading
+                    <input type="checkbox" name="traveling" value="traveling">Travelling
+                    <input type="checkbox" name="singing" value="singing">singing
+                </div>
+                <div class="form-group">
+                    <label for="interest area">Interest Area:</label>
+                    <select name="interest" id="interest">
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Arts">Arts</option>
+                        <option value="Sports">Sports</option>
+                        <option value=" Music">Music</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" value="female"> Female
+                    <input type="radio" name="gender" value="male"> Male
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo:</label>
+
+                    <input type="file" name="photo">
+                </div>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+    <div id="postResultDiv">
+    </div>
+    <br>
+    {{>display}}
+    <!--   <div>
+        <button id="allUsers" type="button" class="btn btn-default">Users</button>
+        <table id="getResultDiv">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <tr>
+                <td class="list-group"></td>
+            </tr>
+        </table>
+        {{!-- <div id="getResultDiv">
+            <ul class="list-group">
+            </ul>
+        </div> --}}
+</div> -->
+</div>
+</div>
+
+<script>
+
+    $("#commentForm").validate({
+        rules: {
+            firstname: {
+                required: true,
+                minlength: 5
+            },
+            lastname: {
+                required: true,
+                minlength: 5,
+            },
+            address: {
+                required: true,
+                minlength: 5,
+            }
+        },
+        messages: {
+
+            firstname: {
+                required: "Please enter a username",
+                minlength: "Your username must consist of at least 2 characters"
+            },
+            lastname: {
+                required: "Please enter a username",
+                minlength: "Your username must consist of at least 2 characters"
+            },
+            address: {
+                required: "Please enter a email address",
+
+            },
+
+        },
+    });
+</script>
+<script>
+
+    $(document).ready(function () {
+
+        // console.log(123, window.location + "/");
+
+        // SUBMIT FORM
+        $("#userForm").submit(function (event) {
+            // Prevent the form from submitting via the browser.
+            event.preventDefault();
+            ajaxPost();
+        });
+
+
+        function ajaxPost() {
+
+            // PREPARE FORM DATA
+            var formData = {
+                firstname: $("#firstname").val(),
+                lastname: $("#lastname").val(),
+                address: $("#address").val(),
+
+                //       gender: $("#gender").val(),
+                interest: $("#interest").val(),
+                //photo: {
+                //    data: fs.readFileSync(photo),
+                //    contentType: photo.type
+                //}
+            }
+            console.log("formdata");
+            // DO POST
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: window.location,
+                data: JSON.stringify(formData),
+                dataType: 'json',
+                success: function (response) {
+                    console.log("user")
+                    console.log(response)
+                    /*
+                    $("#postResultDiv").html("" +
+                        "Post Successfully! " +
+                        "--> " + user.firstname + " " + user.lastname + " " + user.address + "");
+                    */
+                },
+                error: function (e) {
+                    alert("Error!")
+                    console.log("ERROR: ", e);
+                }
+            });
+
+            // Reset FormData after Posting
+            resetData();
+
+        }
+
+        function resetData() {
+            $("#firstname").val("");
+            $("#lastname").val("");
+        }
+    })
+
+    $(document).ready(function () {
+
+        // GET REQUEST
+        $("#allUsers").click(function (event) {
+            event.preventDefault();
+            ajaxGet();
+        });
+
+        // DO GET
+        function ajaxGet() {
+            $.ajax({
+                type: "GET",
+                url: window.location + 'user',
+                success: function (result) {
+
+
+                    console.log(result);
+                    $('#getResultDiv ul').empty();
+                    //    $('#getResultDiv .list-group').append(result)
+                    $.each(result, function (i, user) {
+                        $('#getResultDiv .list-group').append("<tr><td class='list-group'>" + user.firstname + " " + user.lastname + " " + user.address + "</td><tr>")
+                    });
+
+                    console.log("Success: ", result);
+                    console.log("Success: ", result);
+                },
+                error: function (e) {
+                    $("#getResultDiv").html("<strong>Error</strong>");
+                    console.log("ERROR: ", e);
+                }
+            });
+        }
+    })
+
+</script>

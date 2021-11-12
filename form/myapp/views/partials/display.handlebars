@@ -1,0 +1,41 @@
+<table border="1px" cellspacing="" id="example2" class="table table-bordered table-hover">
+    <thead>
+
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>photo</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+
+    {{#each user_array}}
+
+
+    <tr>
+        <td class="counterCell"></td>s
+        <td>{{first_name}}</td>
+        <td>{{last_name}}</td>
+        <td>
+            {{address}}
+        </td>
+        <td>{{gender}}</td>
+
+        <td><img src="/upload/{{photo}}" style="width: 100px;"></td>
+
+        <td>
+            <a href="/edit/{{_id}}">Edit</a> |
+            <a href="/delete/{{_id}}">Delete</a>
+
+        </td>
+    </tr>
+
+    {{/each}}
+
+
+
+</table>
