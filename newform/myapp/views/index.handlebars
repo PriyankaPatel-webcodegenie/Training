@@ -1,11 +1,15 @@
-<title>JQuery Ajax - Bootstrap - NodeJS/Express - MySQL</title>
+<title>JQuery Ajax - Bootstrap - NodeJS/Express</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+{{!--
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> --}}
+<script src="../jquery.min.js"></script>
+<script src="../bootstrap.min.js"></script>
+<script src="../jquery.validate.js"></script>
 {{!--
 <script src="../jquery.validate.js"></script> --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,7 +22,48 @@
 <script>
 
 </script>
+{{!-- serach form css --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
+    /* Style the search field */
+    form.example input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        /* Prevent double borders */
+        cursor: pointer;
+    }
+
+    form.example button:hover {
+        background: #0b7dda;
+    }
+
+    /* Clear floats */
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
 
 <div class="container">
     <div class="col-sm-4">
@@ -79,7 +124,22 @@
 
 </div>
 </div>
+
+<form id="searchform" class="example" action="" style="margin:auto;max-width:300px">
+    <label for="search_gender">Gender:</label>
+    <select name="formgender" id="interest">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+
+    </select>
+    <input type="text" placeholder="Search.." name="search">
+    <button type="button" id="searchsubmit"><i class="fa fa-search"></i></button>
+    <button type="reset" id="searchreset"></i>Clear</button>
+
+</form>
+
 <div id="mydiv">
+
     {{>display}}
 </div>
 <script src="../jquery.validate.js"></script>
@@ -241,6 +301,43 @@
                     console.log(err);
                 }
             })
+
+        });
+
+        $(document).on('click', '#searchsubmit', function () {
+            console.log("serach.")
+
+            //let data = new FormData($("#searchform")[0]);
+            console.log("form data is")
+
+            const href = window.location.href + 'users?' + $("#searchform").serialize();
+            console.log(href);
+            $('#mydiv').load(href)
+
+
+
+        });
+
+        $(document).on('click', '#searchreset', function () {
+            console.log("reset click.")
+
+            //let data = new FormData($("#searchform")[0]);
+            console.log("form data is")
+            $('#mydiv').load(location.href + 'users')
+
+
+
+
+        });
+        $(document).on('click', '#searchreset', function () {
+            console.log("reset click.")
+
+            //let data = new FormData($("#searchform")[0]);
+            console.log("form data is")
+            $('#mydiv').load(location.href + 'users')
+
+
+
 
         });
     })
