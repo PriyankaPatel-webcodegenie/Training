@@ -1,0 +1,396 @@
+<title>JQuery Ajax - Bootstrap - NodeJS/Express</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+{{!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> --}}
+<script src="../jquery.min.js"></script>
+<script src="../bootstrap.min.js"></script>
+<script src="../jquery.validate.js"></script>
+{{!--
+<script src="../jquery.validate.js"></script> --}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{!--
+<script src="../jquery-3.6.0.min.js"></script> --}}
+{{!--
+<script src="../public/stylesheets/getrequest.js"></script> --}}
+{{!--
+<script src="../public/postrequest.js"></script> - --}}
+<script>
+
+</script>
+{{!-- serach form css --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Style the search field */
+    form.example input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        /* Prevent double borders */
+        cursor: pointer;
+    }
+
+    form.example button:hover {
+        background: #0b7dda;
+    }
+
+    /* Clear floats */
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+<div class="container">
+    <div class="col-sm-4">
+        <h3>NodeJS/Express Post/Get Ajax</h3>
+        <div>
+            <form id="userForm" method="post" action="" enctype="multipart/form-data" name="form">
+                <div class="form-group">
+                    <label for="firstname">FirstName:</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname"
+                        placeholder="Enter FirstName">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">LastName:</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Enter LastName" name="lastname">
+                </div>
+                <div class="form-group">
+                    <label for="Address">Address:</label>
+
+                    <textarea name="address" class="form-control" id="address" cols="30" rows="10" name="address"
+                        placeholder="Address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="hobby">Hobby:</label>
+
+                    <input type="checkbox" id="reading" name="hobby" value="reading">Reading
+                    <input type="checkbox" id="traveling" name="hobby" value="traveling">Travelling
+                    <input type="checkbox" id="singing" name="hobby" value="singing">singing
+                </div>
+                <div class="form-group">
+                    <label for="interest area">Interest Area:</label>
+                    <select name="interest" id="interest">
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Arts">Arts</option>
+                        <option value="Sports">Sports</option>
+                        <option value=" Music">Music</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" value="female"> Female
+                    <input type="radio" name="gender" value="male"> Male
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo:</label>
+
+                    <input type="file" name="photo" id="photo">
+                </div>
+        </div>
+        <button type="submit" id="submit" class="btn btn-default">Submit</button>
+        <button data-id="" style="display: none" id="update" class="btn btn-"> Update</button>
+        <button style="display: none" type="reset" id="clear" class="btn btn-">Clear</button>
+        </form>
+    </div>
+    <div id="postResultDiv">
+    </div>
+    <br>
+
+
+</div>
+</div>
+
+<form id="searchform" class="example" action="" style="margin:auto;max-width:300px">
+    <label for="search_gender">Gender:</label>
+    <select name="formgender" id="interest">
+        <option value="">All</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+
+    </select>
+    <input type="text" placeholder="Search.." name="search">
+    <button type="button" id="searchsubmit"><i class="fa fa-search"></i></button>
+    <button type="reset" id="searchreset"></i>Clear</button>
+
+</form>
+
+<table border="1px" cellspacing="" id="example2" class="table table-bordered table-hover" id="table">
+    <thead>
+
+        <tr>
+            <th class="classHeader" name="id" data-url="users?fieldname=id&order=asc">Id</th>
+            <th class="classHeader" name="thfname" data-url="users?fieldname=firstname&order=asc">First Name</th>
+            <th class="classHeader" name="thlname" data-url="users?fieldname=lastname&order=asc">Last Name</th>
+            <th class="classHeader" name="thaddress" data-url="users?fieldname=address&order=asc">Address</th>
+            <th>Gender</th>
+            <th>photo</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+
+    <tbody id="mydiv">
+
+        {{>display}}
+    </tbody>
+
+
+</table>
+<script src="../jquery.validate.js"></script>
+<script>
+    $(document).ready(function () {
+        alert('Page load');
+        $('#userForm').validate({
+
+            rules: {
+                firstname: {
+                    required: true,
+                    minlength: 5
+                },
+                lastname: {
+                    required: true,
+                    minlength: 5,
+                },
+                address: {
+                    required: true,
+                    minlength: 5,
+                }
+
+
+            },
+            messages: {
+
+                firstname: {
+                    required: "Please enter a username",
+                    minlength: "Your username must consist of at least 2 characters"
+                },
+                lastname: {
+                    required: "Please enter a username",
+                    minlength: "Your username must consist of at least 2 characters"
+                },
+                address: {
+                    required: "Please enter a email address",
+
+                }
+
+            },
+            submitHandler: function () {
+                alert("yes..")
+                console.log("location" + location.href)
+                console.log("location" + window.location)
+                let data = new FormData($("#userForm")[0]);
+                console.log("Submit handler")
+                console.log(data)
+
+                $.ajax({
+                    url: '/',
+                    enctype: "multipart/form-data",
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    async: false,
+                    type: 'POST',
+                    data: data,
+
+                    success: function (userForm) {
+                        alert("Success")
+                        console.log("location" + location.href)
+                        console.log("location" + location.href)
+                        console.log("userform data is")
+                        console.log(userForm)
+                        console.log("firstname is ...")
+                        console.log(userForm.firstname)
+                        $('#mydiv').load(location.href + 'users')
+                        $('#userForm')[0].reset();
+
+                    }
+                })
+            },
+
+
+        });
+
+        $(document).on('click', '#delete', function () {
+            //   $('#delete').click(function () {
+            console.log("deleted")
+            let id = $(this).data('id');
+            console.log("id: ");
+            console.log(id);
+            $.ajax({
+                type: 'delete',
+                url: '/' + id,
+                data: { id: id },
+                success: function (data) {
+                    alert("deleted")
+                    $('#' + id).remove();
+                    $('#mydiv').load(location.href + 'users')
+                }
+            })
+        });
+    });
+    $(document).on('click', '#edit', function () {
+        console.log("edit.")
+        $('#submit').hide();
+        $('#update').show();
+        $('#clear').show();
+
+        let id = $(this).data('id')
+        console.log("id is")
+        console.log(id)
+        $.ajax({
+            type: 'get',
+            url: 'edit/' + id + '',
+
+            success: function (data) {
+                console.log("data is...")
+                console.log(data);
+                $("#update").attr('data-id', id);
+                $("#firstname").val(data.firstname)
+                console.log("firstname data is")
+
+                console.log(data.firstname)
+                $("#lastname").val(data.lastname)
+                //     $("#interest").val(data.interest)
+                /*   $('#' + data.gender).prop('checked', 'checked');*/
+                for (let i = 0; i < data.hobby.length; i++) {
+                    $('#' + data.hobby[i]).prop('checked', 'checked');
+                }
+                $("#address").val(data.address)
+                //   $('.photo').append('<img src=/upload/' + data.photo + ' height=50>');
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+
+
+    })
+    $(document).on('click', '#update', function () {
+        console.log("update.")
+
+        let id = $(this).data('id')
+        console.log("id is")
+        console.log(id)
+        let data = new FormData($("#userForm")[0]);
+        $.ajax({
+            type: 'put',
+            url: '/edit/' + id,
+            //   enctype: "multipart/form-data",
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            type: 'POST',
+            data: data,
+            success: function (data) {
+
+                console.log("data is...")
+                console.log(data);
+
+                console.log("firstname data is")
+                console.log(data.firstname)
+                console.log("updated successfully")
+
+                $('#mydiv').load(location.href + 'users')
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+
+    });
+
+    $(document).on('click', '#searchsubmit', function () {
+        console.log("serach.")
+
+        //let data = new FormData($("#searchform")[0]);
+        console.log("form data is")
+
+
+        const href = window.location.href + 'users?' + $("#searchform").serialize();
+        console.log("href is")
+        console.log(href);
+        $('#mydiv').load(href)
+
+
+
+    });
+
+    $(document).on('click', '#searchreset', function () {
+        console.log("reset click.")
+
+        //let data = new FormData($("#searchform")[0]);
+        console.log("form data is")
+        $('#mydiv').load(location.href + 'users')
+        console.log("serach url is url")
+
+
+
+
+
+    });
+
+    $(document).on('click', '.classHeader', function () {
+        let url = $(this).attr('data-url');
+        console.log("hi search sort url is ")
+        var newurl = (window.location.href + 'users?' + $("#searchform").serialize() + url);
+        console.log(newurl)
+        console.log(url)
+        $('#mydiv').load(window.location.href + url + '&' + $("#searchform").serialize());
+        console.log("heyy new url is ")
+        console.log(location.href + url)
+        if (url.indexOf('asc') > 0) {
+            url = url.replace('asc', 'desc');
+        } else if (url.indexOf('des') > 0) {
+            url = url.replace('desc', 'asc');
+        }
+        console.log("heyy url is ")
+        //console.log(window.location.host + '/' + url + '&' + $("#searchform").serialize())
+        console.log(window.location.host + '/' + url + '&' + $("#searchform").serialize())
+        $(this).attr('data-url', url);
+    })
+
+
+
+
+</script>
+
+
+
+
+
+{{!--
+
+/* $('#table').append('<tr <td>' + userForm.firstname + '</td>'
+
+    '<td>' + userForm.lastname + '</td>'
+    ' <td>' + userForm.address + '</td>'
+    ' <td>' + userForm.gender + '</td>'
+    ' <td><img style="width: 100px;" src=/upload/' + userForm.photo + '></td>' '<td><button class="editRecord" data-id='
+            + userForm._id + ' type="button"' + userForm._id + '>Edit</button> ||<button class="deleteRecord" data-id='
+            + userform._id + ' type="button"' + userForm._id + '>Delete</button></td</tr>' )*/ --} --}}
