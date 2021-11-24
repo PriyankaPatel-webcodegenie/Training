@@ -1,0 +1,173 @@
+<title>JQuery Ajax - Bootstrap - NodeJS/Express</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+{{!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> --}}
+<script src="../jquery.min.js"></script>
+<script src="../bootstrap.min.js"></script>
+<script src="../jquery.validate.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+</script>
+{{!-- serach form css --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .error {
+        color: red;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Style the search field */
+    form.example input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    /* Style the submit button */
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        /* Prevent double borders */
+        cursor: pointer;
+    }
+
+    form.example button:hover {
+        background: #0b7dda;
+    }
+
+    /* Clear floats */
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+
+<div class="container">
+    <div class="col-sm-4">
+        <h3>Form</h3>
+        <div>
+            <form id="userForm" method="post" action="" enctype="multipart/form-data" name="form">
+                <div class="form-group">
+                    <label for="firstname">FirstName:</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname"
+                        placeholder="Enter FirstName">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">LastName:</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Enter LastName" name="lastname">
+                </div>
+                <div class="form-group">
+                    <label for="Address">Address:</label>
+
+                    <textarea name="address" class="form-control" id="address" cols="30" rows="10" name="address"
+                        placeholder="Address"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="hobby">Hobby:</label>
+
+                    <input type="checkbox" id="reading" name="hobby" value="reading">Reading
+                    <input type="checkbox" id="traveling" name="hobby" value="traveling">Travelling
+                    <input type="checkbox" id="singing" name="hobby" value="singing">singing
+                </div>
+                <div class="form-group">
+                    <label for="interest area">Interest Area:</label>
+                    <select name="interest" id="interest">
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Arts">Arts</option>
+                        <option value="Sports">Sports</option>
+                        <option value=" Music">Music</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <input type="radio" name="gender" value="female"> Female
+                    <input type="radio" name="gender" value="male"> Male
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo:</label>
+
+                    <input type="file" name="photo" id="photo">
+                </div>
+        </div>
+        <button type="submit" id="submit" class="btn btn-default">Submit</button>
+        <button type="button" data-id="" style="display: none" id="update" class="btn btn-"> Update</button>
+        <button style="display: none" type="reset" id="clear" class="btn btn-">Clear</button>
+        <button style="display: none" type="button" id="back" class="btn btn-">Back</button>
+
+
+        </form>
+    </div>
+    <div id="postResultDiv">
+    </div>
+    <br>
+
+
+</div>
+</div>
+{{!-- search --}}
+<form id="searchform" class="example" action="" style="margin:auto;max-width:300px">
+    <label for="search_gender">Gender:</label>
+    <select name="formgender" id="interest">
+        <option value="">All</option>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+
+    </select>
+
+
+    <input type="text" placeholder="Search.." name="search">
+    <button type="button" id="searchsubmit"><i class="fa fa-search"></i></button>
+    <button type="reset" id="searchreset"></i>Clear</button>
+
+</form>
+
+<button type="button" id="export"></i>Export</button>
+
+{{!-- search end --}}
+
+{{!-- table header--}}
+<table border="1px" cellspacing="" id="example2" class="table table-bordered table-hover" id="table">
+    <thead>
+
+        <tr>
+            <th class="classHeader" name="id" data-url="users?fieldname=id&order=asc">Id</th>
+            <th class="classHeader" name="thfname" data-url="users?fieldname=firstname&order=asc">First Name</th>
+            <th class="classHeader" name="thlname" data-url="users?fieldname=lastname&order=asc">Last Name</th>
+            <th class="classHeader" name="thaddress" data-url="users?fieldname=address&order=asc">Address</th>
+            <th>Gender</th>
+            <th>photo</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    {{!-- table header end--}}
+    {{!-- table content --}}
+    <tbody id="mydiv">
+
+        {{>display}}
+    </tbody>
+
+    {{!-- table content end --}}
+</table>
+<script src="../jquery.validate.js"></script>
+<script src="../JS/form.js"></script>

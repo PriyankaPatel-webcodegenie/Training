@@ -1,0 +1,54 @@
+{{!--
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<table border="1px" cellspacing="" id="example2" class="table table-bordered table-hover" id="table"> --}}
+    {{!-- <style>
+        table {
+            counter-reset: tableCount;
+        }
+
+        .counterCell:before {
+            content: counter(tableCount);
+            counter-increment: tableCount;
+        }
+    </style> --}}
+
+
+    {{#each user_array}}
+
+
+    <tr>
+        <td class="counterCell"></td>s
+        <td>{{firstname}}</td>
+        <td>{{lastname}}</td>
+        <td>
+            {{address}}
+        </td>
+        <td>{{gender}}</td>
+
+        <td><img src="/upload/{{photo}}" style="width: 100px;"></td>
+
+        <td>
+            <button value="{{_id}}" data-id="{{_id}}" id="delete">Delete</button>
+            <button data-id="{{_id}}" id="edit"> Edit</button>
+
+        </td>
+    </tr>
+
+    {{/each}}
+
+    {{#if pagination}}
+    <tr>
+        <td colspan="6">
+            <ul class="pagination">
+                {{#each pagination.totalPage}}
+                <li class="page-item" data-pageurl="&page={{this}}">
+                    <a class="page-link">{{this}}</a>
+                </li> {{/each}}
+            </ul>
+        </td>
+    </tr>
+
+
+    {{/if}}
